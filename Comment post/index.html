@@ -1,0 +1,470 @@
+<html>
+
+	<head>
+
+		<link type="text/css"rel="stylesheet" href="stylesheet.css">
+
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><!--this links to boot strap-->
+
+
+		<title>
+
+			Comment Post
+
+		</title>
+
+		<script>
+
+			//begin function validate
+
+			function validate(){
+
+				var name = document.getElementById("name");
+
+				var blank_field = false;
+
+				if(name.value == ""){
+
+					name.style.backgroundColor = "red";
+
+					blank_field = true;
+
+				} else{
+
+					name.style.backgroundColor = "green";
+
+				}
+
+				var com = document.getElementById("com");
+
+				var blank_field = false;
+
+				if(com.value == ""){
+
+					com.style.backgroundColor = "red";
+
+					blank_field = true;
+
+				}else{
+
+					com.style.backgroundColor = "green";
+
+				}//end else
+
+
+				var title = document.getElementById("title");
+
+				var blank_field = false;
+
+				if(title.value == ""){
+
+					title.style.backgroundColor = "red";
+
+					blank_field = true;
+
+				}else{
+
+					title.style.backgroundColor = "green";
+
+				}//end else
+
+				
+
+				var select1 = document.getElementById("select2");
+
+				if(select1.value == "Choose A Color"){
+
+					select1.style.border = "3px solid red";
+
+					blank_field = true;
+
+				} 
+				else{
+
+				select1.style.border = "none";
+		}
+
+				var select2 = document.getElementById("select1"); 
+
+				if(select2.value == "Choose A Color"){
+
+					select2.style.border = "3px solid red";
+
+					blank_field = true;
+
+				}
+
+				else{
+
+					
+
+					select2.style.border = "none";
+
+				}
+
+				//raideo button validate
+
+				var icon = document.getElementsByName("icon");
+
+				var radiobtns = document.getElementById("radiobtns");
+
+				var blank_radio = true;
+
+				for(var i=0;i<icon.length;i++){
+
+					if(icon[i].checked == true){
+
+						blank_radio = false;
+
+					}
+				}
+
+				if(blank_radio == true){
+
+					radiobtns.style.border = "3px solid red";
+
+					blank_field = true;
+
+				}else{
+
+					radiobtns.style.border = "none";
+
+				}
+
+				var message = document.getElementById("message");
+
+				if(blank_field == true){
+
+					message.innerHTML = "<h2 style = 'color: red;'> SORRY BUT, You forgot to fill in some stuff! </h2> "
+
+				}else{
+
+					message.innerHTML = "";
+				}
+
+				add();
+
+			}//end tag for function validate
+
+			var array = [];
+
+			function add(){
+
+				var name = document.getElementById("name");
+
+				var title = document.getElementById("title");
+
+				var com = document.getElementById("com");
+
+				var icon = document.getElementsByName("icon");
+
+				var icon_value;
+
+				var select1 = document.getElementById("select1");
+
+				var select2 = document.getElementById("select2");
+
+				for(var i=0; i<icon.length; i++){
+
+					if(icon[i].checked == true){
+
+						icon_value = icon[i].value;
+
+					}
+
+				}
+
+				var storage = {name: name.value, title: title.value, com: com.value, icon: icon_value, select1: select1.value, select2: select2.value}; 
+  
+                  	array.push(storage);
+
+				show();
+
+			}//end function add
+
+			function show(){
+
+				var display = document.getElementById("display");
+
+				var post = "";
+
+				for(var i=0; i<array.length; i++){
+
+					post+="<div id='usercomment' style='background-Color:"+array[i].select2 +";'>";
+
+					post += "<input type='checkbox' onclick='gone("+i+");'/>"
+
+					post+="<span style='color:"+array[i].select1 +";'>";
+
+					post+="<strong>"+array[i].name +"</strong><br>";
+
+					post+="<strong>"+array[i].title +"</strong><br>";
+
+					post+="<strong>"+array[i].com +"</strong><br>";
+
+					post+="<img src='"+array[i].icon +"'class='icon'/><br>";
+
+					post+="</scan>";
+
+					post+="</div>";
+
+					display.innerHTML = post;
+
+				}
+
+			}//end function show
+
+			function gone(index){
+
+				array.splice(index,1);
+
+				show();
+			}
+
+		</script>
+
+		<style>
+
+			#comments{
+
+				font-size: 22px;
+
+			}
+
+			#usercomment{
+
+				border: 5px solid black;
+
+				border-radius: 15px;
+			}
+
+		</style>
+
+	</head>
+
+	<body class="body">
+
+		<div class="container">
+
+		</div>
+
+		<div class="row"><!-- start for menu div-->
+
+			<div class="col-xs-12 col-sm-4" id="logo">
+
+				<img class="img-responsive" src="logo.jpg"/><!--gives logo a screen size so that if you are on different screen sizes it will grow-->
+
+			</div>
+
+		</div><!--this ends logo row-->
+
+		<div class="row">
+
+			<div class="col-xs-11" id="menu">
+
+				<ul class="nav nav-tabs">
+
+					<li>
+
+						<a href="index.html">HOME</a>
+
+					</li>
+
+					<li>
+
+						<a href="projects.html">projects</a>
+
+					</li>
+
+					<li>
+
+						<a href="other.html">other</a>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class = "row">
+
+			<div class = "col-xs-12 col-sm-9" id = "comments">Comments:
+
+				<div class = "col-xs-12 col-sm-5" id = "form">
+
+					<header id="text">
+
+						Leave a comment
+
+					</header>
+
+					<div id="message">
+
+
+
+					</div>
+
+					<form class="form-inline">
+
+						<label>
+
+							Name:
+
+						</label>
+
+						<input type="text" class="form-control" id="name" placeholder="Enter Name">
+
+						<label>
+
+							Color:
+
+						</label>
+
+						<select class="form-control" id="select1">
+
+							<option>
+
+								Choose A Color
+
+							</option>
+
+							<option>
+
+								blue
+
+							</option>
+
+							green
+
+							<option>
+
+								black
+
+							</option>
+
+							<option>
+
+								yellow
+
+							</option>
+
+							<option>
+
+								red
+
+							</option>
+
+						</select>
+
+					</form>
+
+					<form class="form-horizontal">
+
+						<label class="control-label">
+
+							Title:
+
+						</label>
+
+						<input type="text" class="form-control" id="title" placeholder="Enter comment title">
+
+						<label>
+
+							Background color:
+
+						</label>
+
+						<select class="form-control" id="select2">
+
+							<option>
+
+								Choose A Color
+
+							</option>
+
+							<option>
+
+								Silver
+
+							</option>
+
+							<option>
+
+								Red
+
+							</option>
+
+							<option>
+
+								Blue
+
+							</option>
+
+							<option>
+
+								Green
+
+							</option>
+
+							<option>
+
+								Gold
+
+							</option>
+
+						</select>
+
+					</form>
+
+					<form class="form-inline" id="radiobtns">
+
+						<label class="control-label">
+
+							Icon:
+
+						</label>
+
+						<input type="radio" name="icon" value="clone_1.png">
+
+						<img src="clone_1.png" class="icon"/>
+
+						<input type="radio" name="icon" value="r2_d2.png">
+
+						<img src="r2_d2.png" class="icon"/>
+
+						<input type="radio" name="icon" value="x_wing.png">
+
+						<img src="x_wing.png" class="icon"/>
+
+						<input type="radio" name="icon" value="smile_1.png">
+
+						<img src="smile_1.png" class="icon"/>
+
+					</form>
+
+					<label class="control-lable">
+
+						Comment:
+
+					</label>
+
+					<textarea class="form-control" row="1" id="com"></textarea>
+
+					<input class="btn btn-default" type="button" value="Post" onclick="validate()">
+
+				</div>
+
+				<div id = "display">
+
+				</div>
+				
+			</div><!--closing comment div-->
+
+		</div><!--closing div class row-->
+
+	</body>
+
+</html>

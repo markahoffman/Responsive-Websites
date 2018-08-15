@@ -1,0 +1,64 @@
+#logo{
+
+	margin-left:50px;
+
+}
+
+#menu{
+
+	margin: 10px;
+}
+
+#comments{
+
+	border:5px solid black;
+
+	margin: 50px;
+
+	width:95%;
+
+	height:800px;
+}
+
+#form{
+
+	margin:30px;
+
+	float:right;
+
+	border:5px solid yellow;
+
+	height:700px;
+
+
+}
+
+.body{
+
+	background:radial-gradient(100% 100% at 50% 30%,green,blue,red,black);
+}
+
+#text{
+
+	background-color:yellow;
+
+	color:#455;
+
+	margin: 5px;
+
+	 text-align:center;
+
+	 font-size: 50px;
+}
+
+.icon{
+
+	height:40px;
+
+	width:40px;
+}
+
+#post{
+
+	margin:5px;
+}
